@@ -66,7 +66,7 @@ set_property(TARGET BNM PROPERTY BNM_INCLUDE_DIRECTORIES ${PUBLIC_INCLUDE_DIRS})
 add_library(${CMAKE_PROJECT_NAME}
         SHARED
         native-lib.cpp
-        Utils/XRInput.cpp
+        Include/Util/XRInput.cpp
         Features/HUD.cpp
 )
 
