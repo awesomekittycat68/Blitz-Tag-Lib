@@ -1,0 +1,48 @@
+#pragma once
+#include <BNMIncludes.hpp>
+#include <BNMResolve.hpp>
+#include "../ForwardDeclarations.hpp"
+#include "../PlayFab_SharedModels/PlayFabRequestCommon.hpp"
+
+namespace PlayFab_ClientModels {
+    struct StartPurchaseRequest : ::PlayFab_SharedModels::PlayFabRequestCommon {
+    public:
+        static BNM::Class GetClass() {
+            static BNM::Class clazz = ::BNM::Class("PlayFab.ClientModels", "StartPurchaseRequest");
+            return clazz;
+        }
+
+        static BNM::MonoType* GetType() { return GetClass().GetMonoType(); }
+
+        ::BNM::Structures::Mono::String* GetCatalogVersion() {
+            static BNM::Field<::BNM::Structures::Mono::String*> _field = GetClass().GetField(O("CatalogVersion"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _field.Get();
+        }
+        ::BNM::Structures::Mono::List<::PlayFab_ClientModels::ItemPurchaseRequest*>* GetItems() {
+            static BNM::Field<::BNM::Structures::Mono::List<::PlayFab_ClientModels::ItemPurchaseRequest*>*> _field = GetClass().GetField(O("Items"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _field.Get();
+        }
+        ::BNM::Structures::Mono::String* GetStoreId() {
+            static BNM::Field<::BNM::Structures::Mono::String*> _field = GetClass().GetField(O("StoreId"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _field.Get();
+        }
+        void SetCatalogVersion(::BNM::Structures::Mono::String* value) {
+            static BNM::Field<::BNM::Structures::Mono::String*> _field = GetClass().GetField(O("CatalogVersion"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _field.Set(value);
+        }
+        void SetItems(::BNM::Structures::Mono::List<::PlayFab_ClientModels::ItemPurchaseRequest*>* value) {
+            static BNM::Field<::BNM::Structures::Mono::List<::PlayFab_ClientModels::ItemPurchaseRequest*>*> _field = GetClass().GetField(O("Items"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _field.Set(value);
+        }
+        void SetStoreId(::BNM::Structures::Mono::String* value) {
+            static BNM::Field<::BNM::Structures::Mono::String*> _field = GetClass().GetField(O("StoreId"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _field.Set(value);
+        }
+    };
+}

@@ -1,0 +1,27 @@
+#pragma once
+#include <BNMIncludes.hpp>
+#include <BNMResolve.hpp>
+#include "../ForwardDeclarations.hpp"
+
+namespace GlobalNamespace {
+    struct FlagForReflectionProbe : BNM::UnityEngine::MonoBehaviour {
+    public:
+        static BNM::Class GetClass() {
+            static BNM::Class clazz = ::BNM::Class("", "FlagForReflectionProbe");
+            return clazz;
+        }
+
+        static BNM::MonoType* GetType() { return GetClass().GetMonoType(); }
+
+        bool GetEnableSimpleReflectionProbe() {
+            static BNM::Field<bool> _field = GetClass().GetField(O("enableSimpleReflectionProbe"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _field.Get();
+        }
+        void SetEnableSimpleReflectionProbe(bool value) {
+            static BNM::Field<bool> _field = GetClass().GetField(O("enableSimpleReflectionProbe"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _field.Set(value);
+        }
+    };
+}

@@ -1,0 +1,146 @@
+#pragma once
+#include <BNMIncludes.hpp>
+#include <BNMResolve.hpp>
+#include "../ForwardDeclarations.hpp"
+#include "MothershipResponse.hpp"
+
+namespace GlobalNamespace {
+    struct CreateOfferDisplayResponse : ::GlobalNamespace::MothershipResponse {
+    public:
+        static BNM::Class GetClass() {
+            static BNM::Class clazz = ::BNM::Class("", "CreateOfferDisplayResponse");
+            return clazz;
+        }
+
+        static BNM::MonoType* GetType() { return GetClass().GetMonoType(); }
+
+        ::BNM::Structures::Mono::String* GetEnvId() {
+            static BNM::Method<::BNM::Structures::Mono::String*> _method = GetClass().GetMethod(O("get_env_id"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _method.Call();
+        }
+        void SetEnvId(::BNM::Structures::Mono::String* value) {
+            static BNM::Method<void> _method = GetClass().GetMethod(O("set_env_id"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _method.Call(value);
+        }
+        ::BNM::Structures::Mono::String* GetName() {
+            static BNM::Method<::BNM::Structures::Mono::String*> _method = GetClass().GetMethod(O("get_name"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _method.Call();
+        }
+        void SetName(::BNM::Structures::Mono::String* value) {
+            static BNM::Method<void> _method = GetClass().GetMethod(O("set_name"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _method.Call(value);
+        }
+        ::BNM::Structures::Mono::String* GetOfferDisplayId() {
+            static BNM::Method<::BNM::Structures::Mono::String*> _method = GetClass().GetMethod(O("get_offer_display_id"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _method.Call();
+        }
+        void SetOfferDisplayId(::BNM::Structures::Mono::String* value) {
+            static BNM::Method<void> _method = GetClass().GetMethod(O("set_offer_display_id"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _method.Call(value);
+        }
+        ::BNM::Structures::Mono::String* GetTitleId() {
+            static BNM::Method<::BNM::Structures::Mono::String*> _method = GetClass().GetMethod(O("get_title_id"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _method.Call();
+        }
+        void SetTitleId(::BNM::Structures::Mono::String* value) {
+            static BNM::Method<void> _method = GetClass().GetMethod(O("set_title_id"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _method.Call(value);
+        }
+        static ::BNM::Structures::Mono::String* GetEnvIdName() {
+            static BNM::Field<::BNM::Structures::Mono::String*> _field = GetClass().GetField(O("env_id_name"));
+            return _field.Get();
+        }
+        static ::BNM::Structures::Mono::String* GetNameName() {
+            static BNM::Field<::BNM::Structures::Mono::String*> _field = GetClass().GetField(O("name_name"));
+            return _field.Get();
+        }
+        static ::BNM::Structures::Mono::String* GetOfferDisplayIdName() {
+            static BNM::Field<::BNM::Structures::Mono::String*> _field = GetClass().GetField(O("offer_display_id_name"));
+            return _field.Get();
+        }
+        void* GetSwigCPtr() {
+            static BNM::Field<void*> _field = GetClass().GetField(O("swigCPtr"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _field.Get();
+        }
+        static ::BNM::Structures::Mono::String* GetTitleIdName() {
+            static BNM::Field<::BNM::Structures::Mono::String*> _field = GetClass().GetField(O("title_id_name"));
+            return _field.Get();
+        }
+        void SetSwigCPtr(void* value) {
+            static BNM::Field<void*> _field = GetClass().GetField(O("swigCPtr"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _field.Set(value);
+        }
+        void Dispose(bool disposing) {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("Dispose"), {"disposing"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call(disposing);
+        }
+        static ::GlobalNamespace::CreateOfferDisplayResponse* FromMothershipResponse(::GlobalNamespace::MothershipResponse* response) {
+            static BNM::Method<::GlobalNamespace::CreateOfferDisplayResponse*> _m = GetClass().GetMethod(O("FromMothershipResponse"), {"response"});
+            return _m.Call(response);
+        }
+        ::BNM::Structures::Mono::String* get_env_id() {
+            static BNM::Method<::BNM::Structures::Mono::String*> _m = GetClass().GetMethod(O("get_env_id"));
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _m.Call();
+        }
+        ::BNM::Structures::Mono::String* get_name() {
+            static BNM::Method<::BNM::Structures::Mono::String*> _m = GetClass().GetMethod(O("get_name"));
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _m.Call();
+        }
+        ::BNM::Structures::Mono::String* get_offer_display_id() {
+            static BNM::Method<::BNM::Structures::Mono::String*> _m = GetClass().GetMethod(O("get_offer_display_id"));
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _m.Call();
+        }
+        ::BNM::Structures::Mono::String* get_title_id() {
+            static BNM::Method<::BNM::Structures::Mono::String*> _m = GetClass().GetMethod(O("get_title_id"));
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _m.Call();
+        }
+        static void* getCPtr(::GlobalNamespace::CreateOfferDisplayResponse* obj) {
+            static BNM::Method<void*> _m = GetClass().GetMethod(O("getCPtr"), {"obj"});
+            return _m.Call(obj);
+        }
+        bool ParseFromResponseString(::BNM::Structures::Mono::String* response) {
+            static BNM::Method<bool> _m = GetClass().GetMethod(O("ParseFromResponseString"), {"response"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _m.Call(response);
+        }
+        void set_env_id(::BNM::Structures::Mono::String* value) {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("set_env_id"), {"value"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call(value);
+        }
+        void set_name(::BNM::Structures::Mono::String* value) {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("set_name"), {"value"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call(value);
+        }
+        void set_offer_display_id(::BNM::Structures::Mono::String* value) {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("set_offer_display_id"), {"value"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call(value);
+        }
+        void set_title_id(::BNM::Structures::Mono::String* value) {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("set_title_id"), {"value"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call(value);
+        }
+        static void* swigRelease(::GlobalNamespace::CreateOfferDisplayResponse* obj) {
+            static BNM::Method<void*> _m = GetClass().GetMethod(O("swigRelease"), {"obj"});
+            return _m.Call(obj);
+        }
+    };
+}

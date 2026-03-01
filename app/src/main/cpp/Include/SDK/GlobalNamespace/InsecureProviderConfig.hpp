@@ -1,0 +1,100 @@
+#pragma once
+#include <BNMIncludes.hpp>
+#include <BNMResolve.hpp>
+#include "../ForwardDeclarations.hpp"
+
+namespace GlobalNamespace {
+    struct InsecureProviderConfig : BNM::UnityEngine::MonoBehaviour {
+    public:
+        static BNM::Class GetClass() {
+            static BNM::Class clazz = ::BNM::Class("", "InsecureProviderConfig");
+            return clazz;
+        }
+
+        static BNM::MonoType* GetType() { return GetClass().GetMonoType(); }
+
+        bool GetEnabled() {
+            static BNM::Method<bool> _method = GetClass().GetMethod(O("get_enabled"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _method.Call();
+        }
+        void SetEnabled(bool value) {
+            static BNM::Method<void> _method = GetClass().GetMethod(O("set_enabled"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _method.Call(value);
+        }
+        bool GetIsSet() {
+            static BNM::Method<bool> _method = GetClass().GetMethod(O("get_isSet"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _method.Call();
+        }
+        void SetIsSet(bool value) {
+            static BNM::Method<void> _method = GetClass().GetMethod(O("set_isSet"));
+            _method.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _method.Call(value);
+        }
+        bool GetSwigCMemOwn() {
+            static BNM::Field<bool> _field = GetClass().GetField(O("swigCMemOwn"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _field.Get();
+        }
+        void* GetSwigCPtr() {
+            static BNM::Field<void*> _field = GetClass().GetField(O("swigCPtr"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _field.Get();
+        }
+        void SetSwigCMemOwn(bool value) {
+            static BNM::Field<bool> _field = GetClass().GetField(O("swigCMemOwn"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _field.Set(value);
+        }
+        void SetSwigCPtr(void* value) {
+            static BNM::Field<void*> _field = GetClass().GetField(O("swigCPtr"));
+            _field.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _field.Set(value);
+        }
+        void Dispose() {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("Dispose"));
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call();
+        }
+        void Dispose(bool disposing) {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("Dispose"), {"disposing"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call(disposing);
+        }
+        void Finalize_1() {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("Finalize"));
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call();
+        }
+        bool get_enabled() {
+            static BNM::Method<bool> _m = GetClass().GetMethod(O("get_enabled"));
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _m.Call();
+        }
+        bool get_isSet() {
+            static BNM::Method<bool> _m = GetClass().GetMethod(O("get_isSet"));
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            return _m.Call();
+        }
+        static void* getCPtr(::GlobalNamespace::InsecureProviderConfig* obj) {
+            static BNM::Method<void*> _m = GetClass().GetMethod(O("getCPtr"), {"obj"});
+            return _m.Call(obj);
+        }
+        void set_enabled(bool value) {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("set_enabled"), {"value"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call(value);
+        }
+        void set_isSet(bool value) {
+            static BNM::Method<void> _m = GetClass().GetMethod(O("set_isSet"), {"value"});
+            _m.SetInstance(reinterpret_cast<::BNM::IL2CPP::Il2CppObject*>(this));
+            _m.Call(value);
+        }
+        static void* swigRelease(::GlobalNamespace::InsecureProviderConfig* obj) {
+            static BNM::Method<void*> _m = GetClass().GetMethod(O("swigRelease"), {"obj"});
+            return _m.Call(obj);
+        }
+    };
+}

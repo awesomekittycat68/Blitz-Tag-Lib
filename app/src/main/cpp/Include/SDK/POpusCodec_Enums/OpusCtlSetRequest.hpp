@@ -1,0 +1,23 @@
+#pragma once
+#include <BNMIncludes.hpp>
+#include <BNMResolve.hpp>
+#include "../ForwardDeclarations.hpp"
+
+namespace POpusCodec_Enums {
+    enum class OpusCtlSetRequest : int {
+        Application = 4000,
+        Bitrate = 4002,
+        MaxBandwidth = 4004,
+        VBR = 4006,
+        Bandwidth = 4008,
+        Complexity = 4010,
+        InbandFec = 4012,
+        PacketLossPercentage = 4014,
+        Dtx = 4016,
+        VBRConstraint = 4020,
+        ForceChannels = 4022,
+        Signal = 4024,
+        Gain = 4034,
+        LsbDepth = 4036,
+    };
+}
