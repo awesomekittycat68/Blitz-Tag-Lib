@@ -68,6 +68,7 @@ add_library(${CMAKE_PROJECT_NAME}
         native-lib.cpp
         Include/Util/XRInput.cpp
         Features/HUD.cpp
+        Features/Nametags.cpp
 )
 
 target_include_directories(

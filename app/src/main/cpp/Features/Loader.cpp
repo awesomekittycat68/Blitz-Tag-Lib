@@ -2,6 +2,7 @@
 #include "Loader.h"
 #include "BNM/Loading.hpp"
 #include "SDK/GorillaLocomotion/GTPlayer.hpp"
+#include "Nametags.h"
 
 namespace BlitzTag
 {
@@ -16,6 +17,7 @@ namespace BlitzTag
     static void new_Update(GorillaLocomotion::GTPlayer* instance)
     {
         Update();
+        Nametags::Update();
         UpdateGTAG(instance);
     }
 
