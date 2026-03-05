@@ -1986,6 +1986,23 @@ struct TextMesh : Component{
             set_color_m[this](color);
         }
     }
+
+    void SetCharacterSize(float size) {
+        static auto set_characterSize = (void(*)(void*, float))GetExternMethod("UnityEngine.TextMesh::set_characterSize");
+        if (set_characterSize) {
+            set_characterSize(this, size);
+        } else {
+            static Method<void> set_characterSize_m = GetClass().GetMethod("set_characterSize");
+            set_characterSize_m[this](size);
+        }
+    }
+
+    std::string GetText() {
+        static auto get_text = (String*(*)(void*))GetExternMethod("UnityEngine.TextMesh::get_text");
+        if (get_text) return get_text(this)->str();
+        static Method<String*> get_text_m = GetClass().GetMethod("get_text");
+        return get_text_m[this]()->str();
+    }
 };
 struct Resources{
     static MonoType* GetType(){

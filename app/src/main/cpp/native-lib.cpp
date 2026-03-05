@@ -12,6 +12,7 @@
 #include "Features/Computer.cpp"
 #include "Features/InAppPurchases.cpp"
 #include "Features/Loader.cpp"
+#include "Features/Nametags.h"
 #include "Utils/Logger.hpp"
 #include "Features/HUD.h"
 #include "Utils/AssetLoading.cpp"
@@ -77,6 +78,7 @@ void Awake() {
 
 void Update() {
     BlitzTag::HUD::Update();
+    BlitzTag::Nametags::Update();
 }
 
 void OnLoaded() {

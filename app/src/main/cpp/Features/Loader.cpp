@@ -17,7 +17,6 @@ namespace BlitzTag
     static void new_Update(GorillaLocomotion::GTPlayer* instance)
     {
         Update();
-        Nametags::Update();
         UpdateGTAG(instance);
     }
 

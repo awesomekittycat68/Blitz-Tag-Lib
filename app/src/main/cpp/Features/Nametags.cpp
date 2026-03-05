@@ -79,29 +79,14 @@ namespace BlitzTag
                 Transform* tagTransform = tagObj->GetTransform();
                 tagTransform->SetLocalScale(Vector3(0.25f, 0.25f, 0.25f));
 
-                Class textMeshClass = Class("UnityEngine", "TextMesh");
-                tagObj->AddComponent(textMeshClass.GetMonoType());
-
-                BNM::IL2CPP::Il2CppObject* tmComponent = tagObj->GetComponent(textMeshClass.GetMonoType());
-                if (tmComponent)
+                TextMesh* textMesh = tagObj->AddComponent<TextMesh*>(TextMesh::GetType());
+                if (textMesh)
                 {
-                    Method<void> setFontSize = textMeshClass.GetMethod("set_fontSize");
-                    Method<void> setCharacterSize = textMeshClass.GetMethod("set_characterSize");
-                    Method<void> setAnchor = textMeshClass.GetMethod("set_anchor");
-                    Method<void> setAlignment = textMeshClass.GetMethod("set_alignment");
-                    Method<void> setColor = textMeshClass.GetMethod("set_color");
-
-                    setFontSize.SetInstance(tmComponent);
-                    setCharacterSize.SetInstance(tmComponent);
-                    setAnchor.SetInstance(tmComponent);
-                    setAlignment.SetInstance(tmComponent);
-                    setColor.SetInstance(tmComponent);
-
-                    setFontSize.Call(48);
-                    setCharacterSize.Call(0.01f);
-                    setAnchor.Call(4);
-                    setAlignment.Call(1);
-                    setColor.Call(tagColor);
+                    textMesh->SetFontSize(48);
+                    textMesh->SetCharacterSize(0.01f);
+                    textMesh->SetAnchor(4);
+                    textMesh->SetAlignment(1);
+                    textMesh->SetColor(tagColor);
                 }
 
                 nametags[rigKey] = tagObj;
@@ -111,7 +96,7 @@ namespace BlitzTag
                 tagObj = it->second;
             }
 
-            BNM::IL2CPP::Il2CppObject* tmComponent = tagObj->GetComponent(Class("UnityEngine", "TextMesh").GetMonoType());
+            TextMesh* tmComponent = tagObj->GetComponent<TextMesh*>(TextMesh::GetType());
             if (tmComponent)
             {
                 GlobalNamespace::NetPlayer* creator = rig->GetCreator();
@@ -127,10 +112,7 @@ namespace BlitzTag
                     }
                 }
 
-                Class textMeshClass = Class("UnityEngine", "TextMesh");
-                Method<void> setText = textMeshClass.GetMethod("set_text");
-                setText.SetInstance(tmComponent);
-                setText.Call(CreateMonoString(name));
+                tmComponent->SetText(name);
             }
 
             float scale = 0.25f;
