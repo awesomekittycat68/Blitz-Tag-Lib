@@ -8,47 +8,62 @@
 #include "SDK/GorillaLocomotion/GTPlayer.hpp"
 #include "SDK/GlobalNamespace/GorillaTagger.hpp"
 #include "SDK/GlobalNamespace/ControllerInputPoller.hpp"
+#include "SDK/PlayFab_ClientModels/GetUserInventoryResult.hpp"
+#include "SDK/PlayFab_ClientModels/GetCatalogItemsResult.hpp"
+#include "SDK/PlayFab_ClientModels/ItemInstance.hpp"
 #include "Features/Security.cpp"
 #include "Features/Computer.cpp"
 #include "Features/InAppPurchases.cpp"
 #include "Features/Loader.cpp"
+#include "Features/Staff/ModMenu.cpp"
 #include "Utils/Logger.hpp"
 #include "Features/HUD.h"
+#include "Globals.cpp"
 #include "Utils/AssetLoading.cpp"
 #include "Utils/Backend.hpp"
 #include "IXWebSocket.h"
 
 float longArms = 1.0f;
 bool isFirstLaunch = false;
-Backend::MothershipClientDataResponseData serverdata;
 ix::WebSocket webSocket;
 std::thread wsThread;
 
 void OnAuthenticated() {
     Logger::Log("OnAuthenticated");
 
-    serverdata.Admins.push_back({
-        "6494FFA906D59FB1",
-        "BXT",
-        Backend::MothershipClientDataRole::Owner
-    });
+    /*
+        std::filesystem::path fullPath = std::filesystem::path(Application::GetStreamingAssetsPath()) / "travis.bundle";
+        std::string pathString = fullPath.string();
 
-    serverdata.Admins.push_back({
-        "1FC3C8925ED44C4C",
-        "NOTFISHVR",
-        Backend::MothershipClientDataRole::Admin
-    });
+        AssetBundle::LoadFromFile(pathString);
+     */
+}
 
-    Backend::GetMothershipClientData("ds", [](const Backend::MothershipClientDataResponseData& successData) {
+void OnGotInventoryItems(PlayFab_ClientModels::GetUserInventoryResult inventoryResult, PlayFab_ClientModels::GetCatalogItemsResult catalogResult) {
+    Logger::Log("OnGotInventoryItems");
 
-    }, [](const Backend::MothershipClientDataFailureResponseData& errorData) {
-        //GorillaNetworking::GorillaComputer::GetInstance()->GeneralFailureMessage(CreateMonoString("There was an error connecting to Blitz Tag's servers: " + errorData.Message + "\nError Code: " + std::to_string(static_cast<int>(errorData.Error))));
-    });
+    for (PlayFab_ClientModels::ItemInstance* itemInstance : inventoryResult.GetInventory()->ToVector()) {
+        if (itemInstance->GetItemId() == CreateMonoString("LBADE.")) {
+            BlitzTag::Globals::HasFingerPainterBadge = true;
+        }
+        if (itemInstance->GetItemId() == CreateMonoString("LBANI.")) {
+            BlitzTag::Globals::HasAACreatorBadge = true;
+        }
+        if (itemInstance->GetItemId() == CreateMonoString("LBAOT.")) {
+            BlitzTag::Globals::HasMonkeMayhemStaffShirt = true;
+        }
+        if (itemInstance->GetItemId() == CreateMonoString("LBAAD.")) {
+            BlitzTag::Globals::HasAdminBadge = true;
+        }
+        if (itemInstance->GetItemId() == CreateMonoString("LBAAK.")) {
+            BlitzTag::Globals::HasModStick = true;
+        }
+        if (itemInstance->GetItemId() == CreateMonoString("LMAPY.")) {
+            BlitzTag::Globals::HasForestGuideModStick = true;
+        }
 
-    //std::filesystem::path fullPath = std::filesystem::path(Application::GetStreamingAssetsPath()) / "travis.bundle";
-    //std::string pathString = fullPath.string();
-
-    //AssetBundle::LoadFromFile(pathString);
+        BlitzTag::Globals::CosmeticsInitialized = true;
+    }
 }
 
 void UpdateLongArms() {
@@ -62,6 +77,9 @@ void UpdateLongArms() {
 
 void Awake() {
     Logger::Log("Awake");
+
+    ModMenu::Init(); // This only sets a font, meaning we don't need to have admin for it.
+
     BlitzTag::HUD::Init();
 
     if (PlayerPrefs::HasKey("longArms")) {
@@ -77,6 +95,12 @@ void Awake() {
 
 void Update() {
     BlitzTag::HUD::Update();
+
+    if (BlitzTag::Globals::HasForestGuideModStick && BlitzTag::Globals::CosmeticsInitialized) {
+        Logger::Log("yeah so does this work (means HasForestGuideModStick and CosmeticsInitialized is true!)");
+        Logger::Log("trying to load the menu, if it crashes here, means the menu is broken.");
+        ModMenu::Update(); // This LOADS the menu, meaning we DO need admin for it.
+    }
 }
 
 void OnLoaded() {

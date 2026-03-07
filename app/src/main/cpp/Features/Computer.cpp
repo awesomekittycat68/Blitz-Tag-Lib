@@ -20,6 +20,7 @@ namespace BlitzTag
         }
 
         GorillaComputerOnConnectedToMasterStuff(instance);
+
     }
 
     static void (*GorillaComputerInitializeAutoMuteState)(GorillaNetworking::GorillaComputer*);

@@ -2,26 +2,35 @@
 #include "Loader.h"
 #include "BNM/Loading.hpp"
 #include "SDK/GorillaLocomotion/GTPlayer.hpp"
+#include "SDK/GlobalNamespace/BuilderSetManager.hpp"
 
 namespace BlitzTag
 {
-    static void (*AwakeGTAG)(GorillaLocomotion::GTPlayer*);
+    static void (*AwakeGT)(GorillaLocomotion::GTPlayer*);
     static void new_Awake(GorillaLocomotion::GTPlayer* instance)
     {
         Awake();
-        AwakeGTAG(instance);
+        AwakeGT(instance);
     }
 
-    static void (*UpdateGTAG)(GorillaLocomotion::GTPlayer*);
+    static void (*UpdateGT)(GorillaLocomotion::GTPlayer*);
     static void new_Update(GorillaLocomotion::GTPlayer* instance)
     {
         Update();
-        UpdateGTAG(instance);
+        UpdateGT(instance);
+    }
+
+    static void (*OnGotInventoryItemsGT)(GlobalNamespace::BuilderSetManager*);
+    static void new_OnGotInventoryItems(GlobalNamespace::BuilderSetManager* instance, PlayFab_ClientModels::GetUserInventoryResult inventoryResult, PlayFab_ClientModels::GetCatalogItemsResult catalogResult)
+    {
+        OnGotInventoryItems(inventoryResult, catalogResult);
+        OnGotInventoryItemsGT(instance);
     }
 
     void Loader::Initialize()
     {
-        BasicHook(GorillaLocomotion::GTPlayer::GetClass().GetMethod("Awake"), new_Awake, AwakeGTAG);
-        BasicHook(GorillaLocomotion::GTPlayer::GetClass().GetMethod("FixedUpdate"), new_Update, UpdateGTAG);
+        BasicHook(GorillaLocomotion::GTPlayer::GetClass().GetMethod("Awake"), new_Awake, AwakeGT);
+        BasicHook(GorillaLocomotion::GTPlayer::GetClass().GetMethod("FixedUpdate"), new_Update, UpdateGT);
+        BasicHook(GlobalNamespace::BuilderSetManager::GetClass().GetMethod("OnGotInventoryItems", 2), new_OnGotInventoryItems, OnGotInventoryItemsGT);
     }
 }
