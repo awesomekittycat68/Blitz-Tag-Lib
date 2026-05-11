@@ -1,4 +1,5 @@
-# Blitz-Tag-Lib
 
-staff menu does NOT work
-if you wanna add something make a pr 😆
+> [!IMPORTANT]
+> Staff menu doesnt work  
+> Make a pull request if you wanna add something  
+> thank yall for the best year of my life with blitz tag <3  
